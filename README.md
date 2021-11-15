@@ -55,3 +55,7 @@ I would like to allow booking requests for the same dates until a request is app
 ```
 
 [User Stories on Trello](https://trello.com/b/ZKKImIIf/user-stories)
+
+## Class and Table relationships
+
+<a href="https://docs.google.com/spreadsheets/d/1H_jSUT6nYiH3smRDr0JFuki-ARcO-ci43W06j-xUydA/edit#gid=0">Tables</a>
