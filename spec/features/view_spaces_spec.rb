@@ -6,5 +6,6 @@ feature "User can see list of spaces available" do
         expect(page).to have_content('Description: One room flat, suitable for head of state')
         expect(page).to have_content('Price per night: 10')
         expect(page).to have_content('example@test.com')
+        expect(page.status_code).to be 200
     end 
-end 
+end

@@ -13,6 +13,10 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do 
     erb :spaces
+  end
+
+  get '/create_space' do 
+    erb :create_space
   end 
 
   run! if app_file == $0
