@@ -7,6 +7,7 @@ feature 'User can sign into an account' do
         fill_in('password_confirmation', with: 'test')
         click_button('Create account')
         expect(page.status_code).to be 200
+        expect(page).to have_content 'Bigmoneybob'
     end
 end
         

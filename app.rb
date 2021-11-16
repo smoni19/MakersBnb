@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require_relative './lib/space'
+require_relative './lib/account'
 
 class MakersBnB < Sinatra::Base
   configure :development do
@@ -20,6 +21,7 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     @spaces = Space.all
+    @name = session[:name]
     erb :spaces
   end
 
@@ -28,6 +30,8 @@ class MakersBnB < Sinatra::Base
   end 
 
   post '/post-account' do 
+    Account.create(name: params[:name], email: params[:email], password: params[:password])
+    session[:name] = params[:name]
     redirect '/spaces'
   end 
 
