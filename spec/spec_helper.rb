@@ -4,6 +4,8 @@ require "capybara/rspec"
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
+ENV['ENVIRONMENT'] = 'test' 
+
 # Tell capybara about the app
 Capybara.app = MakersBnB
 
