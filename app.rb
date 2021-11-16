@@ -7,6 +7,8 @@ class MakersBnB < Sinatra::Base
     register Sinatra::Reloader
   end
 
+  enable :sessions
+
   get '/' do
     erb :index
   end
@@ -16,7 +18,8 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces'
   end
 
-  get '/spaces' do 
+  get '/spaces' do
+    @spaces = Space.all
     erb :spaces
   end
 

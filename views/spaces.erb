@@ -1,8 +1,10 @@
-<div>
-<p>Name: 10 Downing street</p>
-<p>Description: One room flat, suitable for head of state</p>
-<p>Price per night: 10</p>
-<a href = 'mailto:example@test.com'>example@test.com</a>
-</div>
+<% @spaces.each do |space| %>
+  <div>
+    <p>Name: <%= space.name %></p>
+    <p>Description: <%= space.description %></p>
+    <p>Price: <%= space.price %></p>
+    <a href = 'mailto:<%= space.email %>'><%= space.email %></a>
+  </div>
+<% end %>
 
 <a href='/'>Back to the homepage</a>
