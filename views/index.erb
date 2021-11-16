@@ -2,5 +2,20 @@
 
 <div class="buttons">
   <p><a href="/spaces" class="btn">View spaces</a></p>
-  <p><a href="/create_space" class="btn">Create space</a></p>
 </div>
+
+<form action="post-account" method="post">
+  <label for="name">Name:</label>
+  <input type="text" class="form_field" name="name"><br>
+
+  <label for="email">Email address:</label>
+  <input type="email" class="form_field" name="email"><br>
+
+  <label for="password">Password:</label>
+  <input type="password" class="form_field" name="password"><br>
+
+  <label for="password_confirmation">Password confirmation:</label>
+  <input type="password" class="form_field" name="password_confirmation"><br> 
+
+  <button type="submit" value="Create account">Create account</button>
+</form>
