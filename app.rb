@@ -11,6 +11,11 @@ class MakersBnB < Sinatra::Base
     erb :index
   end
 
+  post '/post-space' do
+    Space.create(name: params[:name], description: params[:description], email: params[:email], price: params[:price_per_night])
+    redirect '/spaces'
+  end
+
   get '/spaces' do 
     erb :spaces
   end
