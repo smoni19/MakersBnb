@@ -4,7 +4,7 @@ feature "User can add a space" do
       fill_in('name', with: '10 Downing Street')
       fill_in('description', with: '10 Downing Street')
       fill_in('price_per_night', with: '10')
-      fill_in('email', with: 'test@example.com')
       click_button('Create space')
+      expect(page).to have_content('Name: 10 Downing Street')
   end 
 end

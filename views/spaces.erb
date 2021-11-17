@@ -1,10 +1,11 @@
 <% if @name %>
   <h1>Hello <%= @name %>!</h1>
+  <p><a href="/create_space" class="btn">Create space</a></p>
 <% else %>
   <h1>Hello visitor!</h1>
 <% end %>
 
-<p><a href="/create_space" class="btn">Create space</a></p>
+
 <p><a href='/'>Back to the homepage</a></p>
 
 <% @spaces.each do |space| %>

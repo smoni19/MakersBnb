@@ -37,6 +37,7 @@ class MakersBnB < Sinatra::Base
     @user = Account.login(email: params[:email], password: params[:password])
     if @user 
       session[:name] = @user.name
+      session[:email] = @user.email
       redirect '/spaces'
     else 
       flash[:message] = "Unsuccessful! Please check email or password :("
@@ -44,13 +45,19 @@ class MakersBnB < Sinatra::Base
     end 
   end
 
-  get '/create_space' do 
-    erb :create_space
+  get '/create_space' do
+    if session[:email]
+      @email = session[:email]
+      erb :create_space
+    else
+      erb :index
+    end
   end 
 
   post '/post-account' do 
-    Account.create(name: params[:name], email: params[:email], password: params[:password])
-    session[:name] = params[:name]
+    @user = Account.create(name: params[:name], email: params[:email], password: params[:password])
+    session[:name] = @user.name
+    session[:email] = @user.email
     redirect '/spaces'
   end 
 

@@ -1,15 +1,14 @@
 <form action="post-space" method="post">
   <label for="name">Name:</label>
-  <input type="text" class="form_field" name="name"><br>
+  <input type="text" class="form_field" required name="name"><br>
 
   <label for="description">Description:</label>
-  <textarea class="form_field" name="description" rows="4" cols="50">A description of your space</textarea><br>
+  <textarea class="form_field" name="description" required rows="4" cols="50">A description of your space</textarea><br>
 
   <label for="price_per_night">Price per night:</label>
-  <input type="number" class="form_field" name="price_per_night"><br> 
-  
-  <label for="email_address">Email address:</label>
-  <input type="email" class="form_field" name="email"><br>
+  <input type="number" class="form_field" required name="price_per_night"><br> 
+
+  <input type="hidden" class="form_field" required name="email" value="<%= @email %>"><br>
 
   <button type="submit" value="Create space">Create space</button>
 </form>
