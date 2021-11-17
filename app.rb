@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require_relative './lib/space'
 require_relative './lib/account'
+require 'sinatra/flash'
 
 class MakersBnB < Sinatra::Base
   configure :development do
@@ -9,6 +10,9 @@ class MakersBnB < Sinatra::Base
   end
 
   enable :sessions
+
+  register Sinatra::Flash
+
 
   get '/' do
     erb :index
@@ -31,8 +35,13 @@ class MakersBnB < Sinatra::Base
 
   post '/post-login' do
     @user = Account.login(email: params[:email], password: params[:password])
-    session[:name] = @user.name
-    redirect '/spaces'
+    if @user 
+      session[:name] = @user.name
+      redirect '/spaces'
+    else 
+      flash[:message] = "Unsuccessful! Please check email or password :("
+      redirect '/login'
+    end 
   end
 
   get '/create_space' do 

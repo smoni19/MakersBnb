@@ -17,6 +17,8 @@ class Account
   def self.login(email:, password:)
     ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
     result = connection.exec_params('SELECT name, email FROM accounts WHERE email = $1 AND password = $2;' , [email, password])
+    return unless result.any?
     Account.new(name: result[0]['name'], email: result[0]['email'])
   end
+
 end
