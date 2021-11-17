@@ -30,6 +30,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/post-login' do
+    @user = Account.login(email: params[:email], password: params[:password])
+    session[:name] = @user.name
     redirect '/spaces'
   end
 
