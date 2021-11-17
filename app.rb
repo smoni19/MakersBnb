@@ -25,6 +25,14 @@ class MakersBnB < Sinatra::Base
     erb :spaces
   end
 
+  get '/login' do
+    erb :login
+  end
+
+  post '/post-login' do
+    redirect '/spaces'
+  end
+
   get '/create_space' do 
     erb :create_space
   end 
