@@ -16,5 +16,13 @@ describe Account do
       expect(user.name).to eq "Bigmoneybob"
     end
   end
+
+  describe '.get_id' do
+    it 'returns the id of the logged-in user' do
+      user = Account.create(name: "Bigmoneybob", email: "Bigmoneybob@hotmail.com", password: "test")
+      user_id = Account.get_id(email: user.email)
+      expect(user_id).to be_a(String)
+    end
+  end
 end
     

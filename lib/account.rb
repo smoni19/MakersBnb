@@ -21,4 +21,11 @@ class Account
     Account.new(name: result[0]['name'], email: result[0]['email'])
   end
 
+  def self.get_id(email:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('SELECT id FROM accounts WHERE email = $1;', [email])
+    return unless result.any?
+    return result[0]['id']
+  end
+
 end

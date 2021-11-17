@@ -1,0 +1,6 @@
+when we create or log into an account
+  we want to grab the account_id and store into
+  then want to pass this id to our create space form
+  this is so we can get the account id foreign key into the spaces table
+
+  

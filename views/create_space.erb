@@ -8,7 +8,8 @@
   <label for="price_per_night">Price per night:</label>
   <input type="number" class="form_field" required name="price_per_night"><br> 
 
-  <input type="hidden" class="form_field" required name="email" value="<%= @email %>"><br>
+  <input type="hidden" class="form_field" required name="email" value="<%= @email %>">
+  <input type="hidden" class="form_field" required name="account_id" value="<%= @id %>">
 
   <button type="submit" value="Create space">Create space</button>
 </form>

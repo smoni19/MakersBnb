@@ -10,9 +10,9 @@ class Space
     @email = email
   end
 
-  def self.create(name:, description:, price:, email:)
+  def self.create(name:, description:, price:, email:, account_id:)
     ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
-    result = connection.exec_params('INSERT INTO spaces (name, description, price, email) VALUES($1, $2, $3, $4) RETURNING id, name, description, price, email;', [name, description, price, email])
+    result = connection.exec_params('INSERT INTO spaces (name, description, price, email, account_id) VALUES($1, $2, $3, $4, $5) RETURNING id, name, description, price, email, account_id;', [name, description, price, email, account_id])
     Space.new(name: result[0]['name'], description: result[0]['description'], price: result[0]['price'], email: result[0]['email'])
   end
 
