@@ -2,7 +2,7 @@ require 'pg'
 
 class Booking
 
-  attr_reader :date
+  attr_reader :date, :space_id
 
   def initialize(date:, approval_status:, account_id:, space_id:)
     @date = date

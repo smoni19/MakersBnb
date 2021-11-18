@@ -36,7 +36,7 @@ class Space
 
   def self.get_id(email:, name:)
     ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
-    result = connection.exec_params('SELECT id FROM accounts WHERE email = $1 AND name = $2;', [email, name])
+    result = connection.exec_params('SELECT id FROM spaces WHERE email = $1 AND name = $2;', [email, name])
     return unless result.any?
     return result[0]['id']
   end

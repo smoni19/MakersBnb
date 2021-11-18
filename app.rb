@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require_relative './lib/space'
 require_relative './lib/account'
+require_relative './lib/booking'
 require 'sinatra/flash'
 
 class MakersBnB < Sinatra::Base
@@ -72,6 +73,8 @@ class MakersBnB < Sinatra::Base
   end 
 
   post '/post-booking-request' do
+    session[:space_name] = params[:name]
+    session[:space_email] = params[:email]
     redirect '/booking'
   end
 
@@ -80,6 +83,9 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/post-booking-date' do
+    session[:space_date] = params[:date]
+    space_id = Space.get_id(email: session[:space_email], name: session[:space_name])
+    Booking.create(date: session[:space_date], approval_status: "pending", account_id: session[:id], space_id: space_id)
     redirect '/confirmation'
   end
 
