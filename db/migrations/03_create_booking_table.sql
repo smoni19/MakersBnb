@@ -1,0 +1,1 @@
+CREATE TABLE bookings (id SERIAL PRIMARY KEY, date VARCHAR(60), approval_status VARCHAR(30), account_id INTEGER REFERENCES accounts (id), space_id INTEGER REFERENCES spaces (id));

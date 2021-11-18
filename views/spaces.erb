@@ -12,5 +12,14 @@
     <p>Description: <%= space.description %></p>
     <p>Price: <%= space.price %></p>
     <a href = 'mailto:<%= space.email %>'><%= space.email %></a>
+    <% if @name %>
+      <form action="post-booking-request" method="post">
+      
+        <input type="hidden" class="form_field" required name="email" value="<%= space.email %>">
+        <input type="hidden" class="form_field" required name="name" value="<%= space.name %>">
+  
+        <button type="submit" value="Book a night">Book a night</button>
+      </form>
+    <% end %>
   </div>
 <% end %>
