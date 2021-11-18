@@ -72,5 +72,13 @@ class MakersBnB < Sinatra::Base
     erb :booking
   end
 
+  post '/post-booking-date' do
+    redirect '/confirmation'
+  end
+
+  get '/confirmation' do
+    erb :confirmation
+  end
+
   run! if app_file == $0
 end
