@@ -1,0 +1,11 @@
+<h1>Hello <%= @name %>!</h1>
+<p><a href="/spaces" class="btn">View spaces</a></p>
+<p><a href='/'>Back to the homepage</a></p>
+
+<% @my_bookings.each do |booking| %>
+  <div class="booking">
+    <p>Date: <%= booking.date %></p>
+    <p>Approval Status: <%= booking.approval_status %></p>
+  </div>
+<hr>
+<% end %>

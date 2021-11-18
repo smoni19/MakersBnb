@@ -26,6 +26,15 @@ class Booking
     end
   end
 
+  def self.get_my_booking(account_id:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('SELECT * FROM bookings WHERE account_id = $1;', [account_id])
+    result.map do |booking|
+      Booking.new(date: booking['date'], approval_status: booking['approval_status'], account_id: booking['account_id'], space_id: booking['space_id'])
+    end
+  end
+
+
   def self.get_id(space_id:, account_id:, date:)
     ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
     result = connection.exec_params('SELECT id FROM bookings WHERE space_id = $1 AND account_id = $2 AND date = $3;', [space_id, account_id, date])

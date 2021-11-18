@@ -79,6 +79,11 @@ class MakersBnB < Sinatra::Base
     erb :my_spaces
   end 
 
+  get '/my_booking_history' do
+    @my_bookings = Booking.get_my_booking(account_id: session[:id])
+    erb :my_booking_history
+  end
+
   post '/post-booking-request' do
     session[:space_name] = params[:name]
     session[:space_email] = params[:email]
