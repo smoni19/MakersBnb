@@ -23,4 +23,13 @@ class Space
       Space.new(name: space['name'], description: space['description'], price: space['price'], email: space['email'])
     end
   end
+
+  def self.my_spaces(account_id:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('SELECT * FROM spaces WHERE account_id = $1;', [account_id])
+    result.map do |space|
+      Space.new(name: space['name'], description: space['description'], price: space['price'], email: space['email'])
+    end
+  end 
+
 end

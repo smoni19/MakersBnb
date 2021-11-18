@@ -1,0 +1,14 @@
+
+<h1>Hello <%= @name %>!</h1>
+<p><a href="/create_space" class="btn">Create space</a></p>
+
+
+<p><a href='/'>Back to the homepage</a></p>
+
+<% @my_spaces.each do |my_space| %>
+  <div>
+    <p>Name: <%= my_space.name %></p>
+    <p>Description: <%= my_space.description %></p>
+    <p>Price: <%= my_space.price %></p>
+  </div>
+<% end %>

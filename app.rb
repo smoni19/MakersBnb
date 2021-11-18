@@ -64,5 +64,13 @@ class MakersBnB < Sinatra::Base
     erb :spaces
   end
 
+  get '/my_spaces' do 
+    @email = session[:email]
+    session[:id] = Account.get_id(email: @email)
+    @my_spaces = Space.my_spaces(account_id: session[:id])
+    @name = session[:name]
+    erb :my_spaces
+  end 
+
   run! if app_file == $0
 end
