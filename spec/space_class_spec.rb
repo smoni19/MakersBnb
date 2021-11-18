@@ -27,4 +27,15 @@ describe Space do
     end
   end
 
+  describe "#my_spaces" do
+    it "Takes account id and returns all spaces held in the spaces table for a specific logged in account" do
+      user = Account.create(name: "Bigmoneybob", email: "Bigmoneybob@hotmail.com", password: "test")
+      user_id = Account.get_id(email: user.email)
+      Space.create(name: "10 downing street", description: "One room flat, suitable for head of state", price: 10, email: "example@test.com", account_id: user_id)
+      my_spaces = Space.my_spaces(account_id: user_id)
+      expect(my_spaces.length).to eq 1
+      expect(my_spaces[0].name).to eq "10 downing street"
+    end
+  end
+
 end

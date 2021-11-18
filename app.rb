@@ -64,6 +64,13 @@ class MakersBnB < Sinatra::Base
     erb :spaces
   end
 
+  get '/my_spaces' do 
+    session[:id] = Account.get_id(email: @email = session[:email])
+    @my_spaces = Space.my_spaces(account_id: session[:id])
+    @name = session[:name]
+    erb :my_spaces
+  end 
+
   post '/post-booking-request' do
     redirect '/booking'
   end
