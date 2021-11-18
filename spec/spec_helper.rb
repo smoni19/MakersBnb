@@ -2,6 +2,7 @@ require "rspec"
 require "capybara"
 require "capybara/rspec"
 require_relative "./reset_test_database"
+require_relative "./features/login_steps"
 
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 

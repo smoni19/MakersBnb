@@ -23,4 +23,11 @@ class Space
       Space.new(name: space['name'], description: space['description'], price: space['price'], email: space['email'])
     end
   end
+
+  def self.get_id(email:, name:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('SELECT id FROM accounts WHERE email = $1 AND name = $2;', [email, name])
+    return unless result.any?
+    return result[0]['id']
+  end
 end
