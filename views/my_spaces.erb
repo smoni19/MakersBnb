@@ -3,16 +3,17 @@
 <p><a href="/create_space" class="btn">Create space</a></p>
 <p><a href='/'>Back to the homepage</a></p>
 
-<% @my_spaces.each do |my_space| %>
+<% @request_spaces.each do |my_space| %>
   <div>
-    <p>Name: <%= my_space.name %></p>
-    <p>Description: <%= my_space.description %></p>
-    <p>Price: <%= my_space.price %></p>
+    <p>Name: <%= my_space[0].name %></p>
+    <p>Description: <%= my_space[0].description %></p>
+    <p>Price: <%= my_space[0].price %></p>
 
-  <% space_id = my_space.get_id  %>
-
-
-  <% end %>
-
+    <% my_space[1].each do |booking| %>
+        <div>
+          <p>Date: <%= booking.date %></p>
+          <p>Approval status: <%= booking.approval_status %></p>
+        </div>
+    <% end %>
   </div>
 <% end %>

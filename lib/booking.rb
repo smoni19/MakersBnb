@@ -3,7 +3,7 @@ require 'pg'
 
 class Booking
 
-  attr_reader :date, :space_id
+  attr_reader :date, :space_id, :approval_status, :account_id
 
   def initialize(date:, approval_status:, account_id:, space_id:)
     @date = date
@@ -20,14 +20,9 @@ class Booking
 
   def self.get_space_booking(space_id:)
     ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
-    result = connection.exec_params('SELECT * FROM bookings WHERE space_id = $1 AND approval_status = pending;', [space_id])
+    result = connection.exec_params('SELECT * FROM bookings WHERE space_id = $1 AND approval_status = $2;', [space_id, 'pending'])
     result.map do |booking|
       Booking.new(date: booking['date'], approval_status: booking['approval_status'], account_id: booking['account_id'], space_id: booking['space_id'])
     end
   end 
-  
-end
-
-result.map do |space|
-  Space.new(name: space['name'], description: space['description'], price: space['price'], email: space['email'])
 end

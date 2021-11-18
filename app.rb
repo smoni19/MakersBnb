@@ -68,6 +68,13 @@ class MakersBnB < Sinatra::Base
   get '/my_spaces' do 
     session[:id] = Account.get_id(email: @email = session[:email])
     @my_spaces = Space.my_spaces(account_id: session[:id])
+    
+    @my_space_id = @my_spaces.map do |space|
+      space_id = Space.get_id(email: space.email, name: space.name)
+      Booking.get_space_booking(space_id: space_id)
+    end
+    @request_spaces = @my_spaces.zip(@my_space_id)
+
     @name = session[:name]
     erb :my_spaces
   end 
