@@ -100,5 +100,11 @@ class MakersBnB < Sinatra::Base
     erb :confirmation
   end
 
+  post '/post-status' do
+    booking_id = Booking.get_id(space_id: params[:space_id], account_id: params[:account_id], date: params[:date])
+    Booking.edit_status(booking_id: booking_id, new_status: params[:approval_status])
+    redirect '/my_spaces'
+  end
+
   run! if app_file == $0
 end

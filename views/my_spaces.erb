@@ -4,16 +4,22 @@
 <p><a href='/'>Back to the homepage</a></p>
 
 <% @request_spaces.each do |my_space| %>
-  <div>
+  <div class="space">
     <p>Name: <%= my_space[0].name %></p>
     <p>Description: <%= my_space[0].description %></p>
     <p>Price: <%= my_space[0].price %></p>
-
     <% my_space[1].each do |booking| %>
-        <div>
+        <div class="booking">
           <p>Date: <%= booking.date %></p>
-          <p>Approval status: <%= booking.approval_status %></p>
+          <form action="/post-status" method="post">
+            <button type="submit" value="Approve" name="approval_status">Approve</button>
+            <button type="submit" value="Decline" name="approval_status">Decline</button>
+            <input type="hidden" value="<%= booking.date %>" name="date"/>
+            <input type="hidden" value="<%= booking.account_id %>" name="account_id"/>
+            <input type="hidden" value="<%= booking.space_id %>" name="space_id"/>
+          </form>
         </div>
     <% end %>
   </div>
+<hr>
 <% end %>

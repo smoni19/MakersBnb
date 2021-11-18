@@ -24,5 +24,20 @@ class Booking
     result.map do |booking|
       Booking.new(date: booking['date'], approval_status: booking['approval_status'], account_id: booking['account_id'], space_id: booking['space_id'])
     end
-  end 
+  end
+
+  def self.get_id(space_id:, account_id:, date:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('SELECT id FROM bookings WHERE space_id = $1 AND account_id = $2 AND date = $3;', [space_id, account_id, date])
+    return unless result.any?
+    return result[0]['id']
+  end
+
+  def self.edit_status(booking_id:, new_status:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('UPDATE bookings SET approval_status = $1 WHERE id = $2;', [new_status, booking_id])
+  end
 end
+
+
+

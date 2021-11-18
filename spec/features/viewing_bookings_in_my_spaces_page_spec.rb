@@ -5,7 +5,7 @@ feature "Logged in user can check booking for their spaces" do
     visit("/")
     click_link('View spaces')
     click_button('Book a night')
-    fill_in "date", with: "2025-01-01"
+    fill_in("date", with: "2025-01-01")
     click_button('Book')
     visit('/login')
     fill_in('email', with: 'Bigmoneybob@hotmail.com')
@@ -13,10 +13,7 @@ feature "Logged in user can check booking for their spaces" do
     click_button('Log in')
     click_link('My spaces')
 
-    expect(page).to have_content('johnnybravo@example.com')
-    expect(page).to have_content('Name: Las vegas')
-    expect(page).to have_content('Description: Close to all the bars and casinos on the strip')
-    expect(page).to have_content('Price: 999')
+    expect(page).to have_content('2025-01-01')
     expect(page.status_code).to be 200
     end 
 end 
