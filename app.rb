@@ -103,6 +103,11 @@ class MakersBnB < Sinatra::Base
   post '/post-status' do
     booking_id = Booking.get_id(space_id: params[:space_id], account_id: params[:account_id], date: params[:date])
     Booking.edit_status(booking_id: booking_id, new_status: params[:approval_status])
+    if params[:approval_status] == "Approve"
+      flash[:approval] = "Booking for #{params[:date]} has been approved!"
+    else
+      flash[:decline] = "Booking for #{params[:date]} has been declined!"
+    end
     redirect '/my_spaces'
   end
 
