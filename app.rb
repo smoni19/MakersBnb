@@ -64,5 +64,13 @@ class MakersBnB < Sinatra::Base
     erb :spaces
   end
 
+  post '/post-booking-request' do
+    redirect '/booking'
+  end
+
+  get '/booking' do
+    erb :booking
+  end
+
   run! if app_file == $0
 end
