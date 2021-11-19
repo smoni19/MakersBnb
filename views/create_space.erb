@@ -3,20 +3,54 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+    data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/spaces">View spaces
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Log in</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/create_space">Create a space</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/my_spaces">My spaces</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/my_booking_history">My booking history</a>
+      </li>
+      </ul>
+  </div>
+</nav>
+
+<main>
+<h1>Create a space!</h1>
 <form action="post-space" method="post">
-  <label for="name">Name:</label>
-  <input type="text" class="form_field" required name="name"><br>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" required name="name"><br>
 
-  <label for="description">Description:</label>
-  <textarea class="form_field" name="description" required rows="4" cols="50">A description of your space</textarea><br>
+    <label for="description">Description:</label>
+    <textarea class="form-control" name="description" required rows="4" cols="50">A description of your space</textarea><br>
 
-  <label for="price_per_night">Price per night:</label>
-  <input type="number" class="form_field" required name="price_per_night"><br> 
+    <label for="price_per_night">Price per night:</label>
+    <input type="number" class="form-control" required name="price_per_night"><br> 
 
-  <input type="hidden" class="form_field" required name="email" value="<%= @email %>">
-  <input type="hidden" class="form_field" required name="account_id" value="<%= @id %>">
+    <input type="hidden" class="form-control" required name="email" value="<%= @email %>">
+    <input type="hidden" class="form-control" required name="account_id" value="<%= @id %>">
 
-  <button type="submit" class="btn btn-info" value="Create space">Create space</button>
+    <button type="submit" class="btn btn-info" value="Create space">Create space</button>
+  </div>
 </form>
-
-<a href='/'>Back to the homepage</a>
+</main>
+</body>

@@ -3,16 +3,40 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<% flash.keys.each do |type| %>
-  <div data-alert class="flash <%= type %> alert-box radius">
-    <%= flash[type] %>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+    data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/spaces">View spaces
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Log in</a>
+      </li>
+      <% if @name %>
+      <li class="nav-item">
+        <a class="nav-link" href="/create_space">Create a space</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/my_spaces">My spaces</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/my_booking_history">My booking history</a>
+      </li>
+      <% end %>
+      </ul>
   </div>
-<% end %>
+</nav>
 
-
+<main>
 <h1>Hello <%= @name %>!</h1>
-<p><a href="/create_space" class="btn">Create space</a></p>
-<p><a href='/'>Back to the homepage</a></p>
 
 <% @request_spaces.each do |my_space| %>
   <div class="space">
@@ -23,10 +47,8 @@
         <div class="booking">
           <p>Date: <%= booking.date %></p>
           <form action="/post-status" method="post">
-
-            <button type="submit" class="btn btn-info" value="Approved" name="approval_status">Approve</button>
-            <button type="submit" class="btn btn-info" value="Declined" name="approval_status">Decline</button>
-
+            <button type="submit" class="btn btn-info btn-sm" value="Approved" name="approval_status">Approve</button>
+            <button type="submit" class="btn btn-info btn-sm" value="Declined" name="approval_status">Decline</button>
             <input type="hidden" value="<%= booking.date %>" name="date"/>
             <input type="hidden" value="<%= booking.account_id %>" name="account_id"/>
             <input type="hidden" value="<%= booking.space_id %>" name="space_id"/>
@@ -34,5 +56,12 @@
         </div>
     <% end %>
   </div>
+  <% flash.keys.each do |type| %>
+  <div data-alert class="flash <%= type %> alert-box radius">
+    <%= flash[type] %>
+  </div>
+<% end %>
 <hr>
 <% end %>
+</main>
+</body>

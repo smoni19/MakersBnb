@@ -81,6 +81,7 @@ class MakersBnB < Sinatra::Base
 
   get '/my_booking_history' do
     @my_bookings = Booking.get_my_booking(account_id: session[:id])
+    @name = session[:name]
     erb :my_booking_history
   end
 
@@ -91,6 +92,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/booking' do
+    @name = session[:name]
     erb :booking
   end
 
@@ -119,9 +121,9 @@ class MakersBnB < Sinatra::Base
     Booking.edit_status(booking_id: booking_id, new_status: params[:approval_status])
     if params[:approval_status] == "Approved"
       Booking.decline_pendings(booking_id: booking_id, space_id: params[:space_id], date: params[:date])
-      flash[:approval] = "Booking for #{params[:date]} has been approved!"
+      flash[:approval] = "Booking for #{params[:date]} has been <span>approved!</span>"
     elsif params[:approval_status] == "Declined"
-      flash[:decline] = "Booking for #{params[:date]} has been declined!"
+      flash[:decline] = "Booking for #{params[:date]} has been <span>declined!</span>"
     end
     redirect '/my_spaces'
   end
