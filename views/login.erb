@@ -1,3 +1,8 @@
+<head>
+  <link rel="stylesheet" href="https://hackerthemes.com/bootstrap-themes/demo/theme-machine/hello-world/css/bootstrap4-hello-world.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
 <% flash.keys.each do |type| %>
   <div data-alert class="flash <%= type %> alert-box radius">
     <%= flash[type] %>
@@ -12,6 +17,6 @@
   <label for="password">Password:</label>
   <input type="password" class="form_field" name="password"><br>
 
-  <button type="submit" value="Log in">Log in</button>
+  <button type="submit" class="btn btn-info" value="Log in">Log in</button>
 </form>
 
