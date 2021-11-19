@@ -118,6 +118,7 @@ class MakersBnB < Sinatra::Base
     booking_id = Booking.get_id(space_id: params[:space_id], account_id: params[:account_id], date: params[:date])
     Booking.edit_status(booking_id: booking_id, new_status: params[:approval_status])
     if params[:approval_status] == "Approved"
+      Booking.decline_pendings(booking_id: booking_id, space_id: params[:space_id], date: params[:date])
       flash[:approval] = "Booking for #{params[:date]} has been approved!"
     elsif params[:approval_status] == "Declined"
       flash[:decline] = "Booking for #{params[:date]} has been declined!"
