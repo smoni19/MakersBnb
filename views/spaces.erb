@@ -47,7 +47,7 @@
     <p><strong>Name:</strong> <%= space.name %></p>
     <p><strong>Description:</strong> <%= space.description %></p>
     <p><strong>Price:</strong> <%= space.price %></p>
-    <p><span class="fas fa-phone"></span><a href = 'mailto:<%= space.email %>'><%= space.email %></a></p>
+    <p><strong>Email:</strong> <a href = 'mailto:<%= space.email %>'><%= space.email %></a></p>
     <% if @name %>
       <form action="post-booking-request" method="post">
         <input type="hidden" class="form-control" required name="email" value="<%= space.email %>">

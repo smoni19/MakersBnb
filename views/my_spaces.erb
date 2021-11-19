@@ -40,9 +40,9 @@
 
 <% @request_spaces.each do |my_space| %>
   <div class="space">
-    <p>Name: <%= my_space[0].name %></p>
-    <p>Description: <%= my_space[0].description %></p>
-    <p>Price: <%= my_space[0].price %></p>
+    <p><strong>Name:</strong> <%= my_space[0].name %></p>
+    <p><strong>Description:</strong> <%= my_space[0].description %></p>
+    <p><strong>Price:</strong> <%= my_space[0].price %></p>
     <% my_space[1].each do |booking| %>
         <div class="booking">
           <p>Date: <%= booking.date %></p>

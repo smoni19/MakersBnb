@@ -15,3 +15,12 @@ h1{margin-bottom:40px}
 .btn-info.btn-sm{color:white;}
 .flash.approval span{color:green}
 .flash.decline span{color:red}
+
+.inline-button {
+  display: flex;
+  flex-direction: row;
+}
+
+.inline-button .btn {
+  margin-left: 10px;
+}

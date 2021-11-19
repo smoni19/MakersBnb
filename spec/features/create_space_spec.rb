@@ -6,7 +6,7 @@ feature "User can add a space" do
       fill_in('email', with: 'Lessermoneymike@hotmail.com')
       fill_in('password', with: 'test2')
       click_button('Log in')
-      click_link('Create space')
+      click_link('Create a space')
       fill_in('name', with: '10 Downing Street')
       fill_in('description', with: '10 Downing Street')
       fill_in('price_per_night', with: '10')
