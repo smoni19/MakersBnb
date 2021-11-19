@@ -34,6 +34,12 @@ class Booking
     end
   end
 
+  def self.find_approved_bookings(date:, space_id:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('SELECT * FROM bookings WHERE space_id = $1 AND date = $2 AND approval_status = $3;', [space_id, date, "Approved"])
+    result.any? ? true : false
+  end
+
 
   def self.get_id(space_id:, account_id:, date:)
     ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')

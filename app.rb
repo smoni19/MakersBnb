@@ -97,20 +97,29 @@ class MakersBnB < Sinatra::Base
   post '/post-booking-date' do
     session[:space_date] = params[:date]
     space_id = Space.get_id(email: session[:space_email], name: session[:space_name])
-    Booking.create(date: session[:space_date], approval_status: "pending", account_id: session[:id], space_id: space_id)
-    redirect '/confirmation'
+    approved = Booking.find_approved_bookings(date: session[:space_date], space_id: space_id)
+    if approved
+      redirect '/booking-failed'
+    else
+      Booking.create(date: session[:space_date], approval_status: "pending", account_id: session[:id], space_id: space_id)
+      redirect '/confirmation'
+    end
   end
 
   get '/confirmation' do
     erb :confirmation
   end
 
+  get '/booking-failed' do
+    erb :booking_failed
+  end
+
   post '/post-status' do
     booking_id = Booking.get_id(space_id: params[:space_id], account_id: params[:account_id], date: params[:date])
     Booking.edit_status(booking_id: booking_id, new_status: params[:approval_status])
-    if params[:approval_status] == "Approve"
+    if params[:approval_status] == "Approved"
       flash[:approval] = "Booking for #{params[:date]} has been approved!"
-    else
+    elsif params[:approval_status] == "Declined"
       flash[:decline] = "Booking for #{params[:date]} has been declined!"
     end
     redirect '/my_spaces'
