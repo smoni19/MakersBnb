@@ -1,24 +1,32 @@
+<head>
+  <link rel="stylesheet" href="https://hackerthemes.com/bootstrap-themes/demo/theme-machine/hello-world/css/bootstrap4-hello-world.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
 <h1>Welcome to MakersBnB</h1>
 
 
 <div class="buttons">  
 
-  <p><a href="/spaces" class="btn">View spaces</a></p>
-  <p><a href="/login" class="btn">Log in</a></p>
+  <p><a href="/spaces" class="btn btn-info">View spaces</a></p>
+  <p><a href="/login" class="btn btn-info">Log in</a></p>
 </div>
 
 <form action="post-account" method="post">
+<div class="form-group">
   <label for="name">Name:</label>
-  <input type="text" class="form_field" name="name"><br>
+  <input type="text" class="form-control" name="name"><br>
 
   <label for="email">Email address:</label>
-  <input type="email" class="form_field" name="email"><br>
+  <input type="email" class="form-control" name="email"><br>
 
   <label for="password">Password:</label>
-  <input type="password" class="form_field" name="password"><br>
+  <input type="password" class="form-control" name="password"><br>
 
   <label for="password_confirmation">Password confirmation:</label>
-  <input type="password" class="form_field" name="password_confirmation"><br> 
+  <input type="password" class="form-control" name="password_confirmation"><br> 
 
-  <button type="submit" value="Create account">Create account</button>
+
+  <button type="submit" class="btn btn-info" value="Create account">Create account</button>
+</div>
 </form>
+
