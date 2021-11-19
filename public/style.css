@@ -24,3 +24,13 @@ h1{margin-bottom:40px}
 .inline-button .btn {
   margin-left: 10px;
 }
+
+.main-heading {
+  font-size: 3.3rem;
+  text-align: center;
+}
+
+.main-heading span {
+  font-size: 60%;
+  display: block;
+}
