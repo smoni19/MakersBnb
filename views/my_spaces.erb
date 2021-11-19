@@ -1,7 +1,7 @@
-<head> <!-- CSS only -->
+<head>
   <link rel="stylesheet" href="https://hackerthemes.com/bootstrap-themes/demo/theme-machine/hello-world/css/bootstrap4-hello-world.min.css">
   <link rel="stylesheet" href="style.css">
-</head>>
+</head>
 
 <% flash.keys.each do |type| %>
   <div data-alert class="flash <%= type %> alert-box radius">
@@ -23,8 +23,8 @@
         <div class="booking">
           <p>Date: <%= booking.date %></p>
           <form action="/post-status" method="post">
-            <button type="submit" value="Approve" name="approval_status">Approve</button>
-            <button type="submit" value="Decline" name="approval_status">Decline</button>
+            <button type="submit" class="btn btn-info" value="Approve" name="approval_status">Approve</button>
+            <button type="submit" class="btn btn-info" value="Decline" name="approval_status">Decline</button>
             <input type="hidden" value="<%= booking.date %>" name="date"/>
             <input type="hidden" value="<%= booking.account_id %>" name="account_id"/>
             <input type="hidden" value="<%= booking.space_id %>" name="space_id"/>
