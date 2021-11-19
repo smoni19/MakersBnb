@@ -23,8 +23,10 @@
         <div class="booking">
           <p>Date: <%= booking.date %></p>
           <form action="/post-status" method="post">
-            <button type="submit" class="btn btn-info" value="Approve" name="approval_status">Approve</button>
-            <button type="submit" class="btn btn-info" value="Decline" name="approval_status">Decline</button>
+
+            <button type="submit" class="btn btn-info" value="Approved" name="approval_status">Approve</button>
+            <button type="submit" class="btn btn-info" value="Declined" name="approval_status">Decline</button>
+
             <input type="hidden" value="<%= booking.date %>" name="date"/>
             <input type="hidden" value="<%= booking.account_id %>" name="account_id"/>
             <input type="hidden" value="<%= booking.space_id %>" name="space_id"/>

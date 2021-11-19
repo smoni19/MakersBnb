@@ -34,12 +34,23 @@ class Booking
     end
   end
 
+  def self.find_approved_bookings(date:, space_id:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('SELECT * FROM bookings WHERE space_id = $1 AND date = $2 AND approval_status = $3;', [space_id, date, "Approved"])
+    result.any? ? true : false
+  end
+
 
   def self.get_id(space_id:, account_id:, date:)
     ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
     result = connection.exec_params('SELECT id FROM bookings WHERE space_id = $1 AND account_id = $2 AND date = $3;', [space_id, account_id, date])
     return unless result.any?
     return result[0]['id']
+  end
+
+  def self.decline_pendings(booking_id:, space_id:, date:)
+    ENV['ENVIRONMENT'] == 'test' ? connection = PG.connect(dbname: 'makersbnb_test') : connection = PG.connect(dbname: 'makersbnb')
+    result = connection.exec_params('UPDATE bookings SET approval_status = $1 WHERE space_id = $2 AND date = $3 AND NOT id = $4;', ["Declined", space_id, date, booking_id])
   end
 
   def self.edit_status(booking_id:, new_status:)
