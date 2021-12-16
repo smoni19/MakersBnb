@@ -1,4 +1,4 @@
-# MakersBnb - Adam, Simon, Blessing, Will B
+# MakersBnb Project
 
 ## Project Specifications 
 
