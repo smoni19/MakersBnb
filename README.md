@@ -4,6 +4,15 @@
 
 A web application that allows users to list spaces they have available, and to hire spaces for the night.
 
+### To test it out:
+```
+1. clone repo
+2. cd into directory 
+3. run bundle to make sure all gems are in place
+4. run rackup to initiate server
+4. see application on http://localhost:9292/
+```
+
 ### MVP
 
 As a user so I can see my space, I want to be able to add my space with description, and see a list of all current spaces.
