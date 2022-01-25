@@ -17,6 +17,12 @@ A web application that allows users to list spaces they have available, and to h
 
 As a user so I can see my space, I want to be able to add my space with description, and see a list of all current spaces.
 
+## Our approach
+- Initially, we decided our working practises.  This consisted of how we would schedule things such as morning stand-ups, retros, splitting the workload and what to do if anyone had issues.
+
+## Team Successes
+- We managed to successfully split the workload via branching so that code wasn't overwritten
+- We kept to our schedule
 
 
 ## User stories 
